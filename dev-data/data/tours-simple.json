@@ -205,35 +205,5 @@
         "2022-01-16,10:00",
         "2022-12-12,10:00"
       ]
-    },
-    {
-      "id": 9,
-      "name": "test tour",
-      "duration": 10,
-      "difficultiy": "easy"
-    },
-    {
-      "id": 10
-    },
-    {
-      "id": 11
-    },
-    {
-      "id": 12,
-      "name": "test tour",
-      "duration": 10,
-      "difficultiy": "easy"
-    },
-    {
-      "id": 13,
-      "name": "test tour",
-      "duration": 10,
-      "difficultiy": "easy"
-    },
-    {
-      "id": 14,
-      "name": "test tour",
-      "duration": 10,
-      "difficultiy": "easy"
     }
   ]
