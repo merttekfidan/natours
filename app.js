@@ -1,6 +1,8 @@
 const morgan = require('morgan');
 const express = require('express');
 const app = express();
+const AppError = require('./utils/appError');
+const glabalErrorHandler = require('./controllers/errorController');
 const tourRouter = require('./routes/tourRoutes.js');
 const userRouter = require('./routes/userRoutes.js');
 ////////////////////
@@ -26,21 +28,12 @@ app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
 
 app.all('*', (req, res, next) => {
-  const err = new Error(`Can't find ${req.originalUrl} on this server`);
-  err.status = 'fail';
-  err.statusCode = 404;
-  next(err);
+  // const err = new Error(`Can't find ${req.originalUrl} on this server`);
+  // err.status = 'fail';
+  // err.statusCode = 404;
+  next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
 });
 
-app.use((err, req, res, next) => {
-  err.statusCode = err.statusCode || 500;
-  err.status = err.status || 'fail';
-
-  res.status(err.statusCode).json({
-    status: err.status,
-    message: err.message,
-  });
-  next();
-});
+app.use(glabalErrorHandler);
 
 module.exports = app;
