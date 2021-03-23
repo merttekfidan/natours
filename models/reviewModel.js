@@ -23,7 +23,7 @@ const reviewSchema = new mongoose.Schema(
       ref: 'Tour',
       required: [true, 'Review must belong to a tour'],
     },
-    users: {
+    user: {
       type: mongoose.Schema.ObjectId,
       ref: 'User',
       required: [true, 'Review must belong to a user'],
@@ -34,10 +34,6 @@ const reviewSchema = new mongoose.Schema(
     toObject: { virtuals: true },
   }
 );
-
-reviewSchema.pre('save', function (next) {
-  this.populate('');
-});
 
 const Review = mongoose.model('Review', reviewSchema);
 
