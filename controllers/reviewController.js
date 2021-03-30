@@ -2,6 +2,7 @@ const Review = require('./../models/reviewModel');
 //const apiFeatures = require('./../utils/apiFeatures');
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('../utils/appError');
+const factory = require('./handlerFactory.js');
 
 exports.getAllReviews = catchAsync(async (req, res, next) => {
   //Nested yaptığımızdan dolayı eğer eğer tourId parametresi doluysa reviewsları o idye göre filtreliyor
@@ -27,3 +28,5 @@ exports.createReview = catchAsync(async (req, res, next) => {
     },
   });
 });
+
+exports.deleteReview = factory.deleteOne(Review);

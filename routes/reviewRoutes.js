@@ -12,3 +12,5 @@ router
   .get(reviewController.getAllReviews)
   .post(authController.protect, reviewController.createReview);
 module.exports = router;
+
+router.route('/:id').delete(reviewController.deleteReview);
