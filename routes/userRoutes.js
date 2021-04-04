@@ -24,7 +24,10 @@ const {
   deleteUser,
   updateMe,
   deleteMe,
+  getMe,
 } = require('./../controllers/userController');
+
+router.get('/me', authController.protect, getMe, getUser);
 router.patch('/updateMe', authController.protect, updateMe);
 router.delete('/deleteMe', authController.protect, deleteMe);
 router.route('/').get(getAllUsers).post(createUser);
