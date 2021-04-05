@@ -112,6 +112,7 @@ const tourSchema = new mongoose.Schema(
   }
 );
 
+//Creates indexes and increases performance of queries usually used.
 tourSchema.index({ price: 1, ratingAverage: -1 });
 tourSchema.index({ slug: 1 });
 
