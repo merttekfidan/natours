@@ -36,6 +36,10 @@ const reviewSchema = new mongoose.Schema(
   }
 );
 
+// one user can leave only one review for each tour.
+//Creating index may take 1 day to be updated on mongodb servers.
+reviewSchema.index({ tour: 1, user: 1 }, { unique: 1 });
+
 reviewSchema.pre(/^find/, function (next) {
   // this.populate({
   //   path: 'tour',
