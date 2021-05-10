@@ -13,6 +13,7 @@ const glabalErrorHandler = require('./controllers/errorController');
 const tourRouter = require('./routes/tourRoutes.js');
 const userRouter = require('./routes/userRoutes.js');
 const reviewRouter = require('./routes/reviewRoutes.js');
+const viewRouter = require('./routes/viewRoutes.js');
 
 ////////////////////
 //// GLOBAL MIDDLEWARES
@@ -73,22 +74,8 @@ app.use((req, res, next) => {
   console.log(req.headers);
   next();
 });
-app.get('/', (req, res) => {
-  res.status(200).render('base', {
-    tour: 'The forest hiker',
-    user: 'Merdjan',
-  });
-});
-app.get('/overview', (req, res) => {
-  res.status(200).render('overview', {
-    title: 'All Tours',
-  });
-});
-app.get('/tour', (req, res) => {
-  res.status(200).render('tour', {
-    title: 'The Frest Hiker Tour',
-  });
-});
+
+app.use('/', viewRouter);
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reviews', reviewRouter);
