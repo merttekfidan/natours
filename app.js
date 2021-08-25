@@ -6,6 +6,7 @@ const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
+const cors = require('cors');
 const cookieParser = require('cookie-parser');
 
 const app = express();
@@ -19,10 +20,18 @@ const viewRouter = require('./routes/viewRoutes.js');
 ////////////////////
 //// GLOBAL MIDDLEWARES
 // Set security HTTP headers
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  })
+);
+app.use(cors());
+app.options('*', cors());
+// app.options('/api/v1/tours/:id', cors());
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
+
 // Serving static files
 app.use(express.static(path.join(__dirname, `public`)));
 
