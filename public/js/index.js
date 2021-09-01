@@ -1,4 +1,4 @@
-/* eslint-disable */
+/* eslint-disable no-alert, no-console */
 
 import '@babel/polyfill';
 import { login } from './login';
@@ -22,3 +22,5 @@ if (loginForm) {
     login(email, password);
   });
 }
+
+/* eslint-disable no-alert, no-console */
