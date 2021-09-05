@@ -56,10 +56,10 @@ exports.login = catchAsync(async (req, res, next) => {
   const token = signToken(user._id);
 });
 
-exports.logout = (req, res)=>{
+exports.logout = (req, res) => {
   res.clearCookie('jwt');
-  res.status(200).json({status:'success'})
-}
+  res.status(200).json({ status: 'success' });
+};
 
 exports.protect = catchAsync(async (req, res, next) => {
   // 1) Getting token and check if it's there
@@ -100,7 +100,7 @@ exports.protect = catchAsync(async (req, res, next) => {
 
 exports.isLoggedIn = catchAsync(async (req, res, next) => {
   if (req.cookies.jwt) {
-    try{
+    try {
       // 1)Verify token
       const decoded = await promisify(jwt.verify)(
         req.cookies.jwt,
@@ -120,8 +120,8 @@ exports.isLoggedIn = catchAsync(async (req, res, next) => {
       // There is a logged in user
       res.locals.user = currentUser;
       return next();
-    }catch(err){
-        return next();
+    } catch (err) {
+      return next();
     }
   }
   next();
