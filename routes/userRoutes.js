@@ -1,7 +1,5 @@
 const express = require('express');
-
 const authController = require('./../controllers/authController');
-const userController = require('./../controllers/userController');
 const {
   getAllUsers,
   getUser,
@@ -11,6 +9,7 @@ const {
   updateMe,
   deleteMe,
   getMe,
+  uploadUserPhoto,
 } = require('./../controllers/userController');
 
 const router = express.Router();
@@ -27,7 +26,7 @@ router.use(authController.protect);
 
 router.patch('/updateMyPassword', authController.updatePassword);
 router.get('/me', getMe, getUser);
-router.patch('/updateMe', updateMe);
+router.patch('/updateMe', uploadUserPhoto, updateMe);
 router.delete('/deleteMe', deleteMe);
 
 //After this middleware all routes below will be restricted to role mentioned in brackets (admin)
