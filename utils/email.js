@@ -16,7 +16,7 @@ module.exports = class Email {
       return 1;
     }
 
-    return nodemailer.newTransport({
+    return nodemailer.createTransport({
       host: process.env.EMAIL_HOST,
       port: process.env.EMAIL_PORT,
       auth: {
@@ -29,14 +29,11 @@ module.exports = class Email {
   async send(template, subject) {
     //Send the actual email
     // 1) Render HTML based on a pug template
-    const html = pug.renderFile(
-      `${__dirname}/../views/emails/${template}.pug`,
-      {
-        firstName: this.firstName,
-        url: this.url,
-        subject,
-      }
-    );
+    const html = pug.renderFile(`${__dirname}/../views/email/${template}.pug`, {
+      firstName: this.firstName,
+      url: this.url,
+      subject,
+    });
     // 2) Define email options
     const mailOptions = {
       from: this.from,
@@ -54,10 +51,3 @@ module.exports = class Email {
     await this.send('welcome', 'Welcome to the Natours Family');
   }
 };
-
-const sendEmail = async (options) => {
-  // 2) Define the mail options
-  // 3) Send the email
-};
-
-module.exports = sendEmail;
