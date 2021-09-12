@@ -12,10 +12,11 @@ const cookieParser = require('cookie-parser');
 const app = express();
 const AppError = require('./utils/appError');
 const glabalErrorHandler = require('./controllers/errorController');
-const tourRouter = require('./routes/tourRoutes.js');
-const userRouter = require('./routes/userRoutes.js');
-const reviewRouter = require('./routes/reviewRoutes.js');
-const viewRouter = require('./routes/viewRoutes.js');
+const tourRouter = require('./routes/tourRoutes');
+const userRouter = require('./routes/userRoutes');
+const reviewRouter = require('./routes/reviewRoutes');
+const bookingRouter = require('./routes/bookingRoutes');
+const viewRouter = require('./routes/viewRoutes');
 
 ////////////////////
 //// GLOBAL MIDDLEWARES
@@ -91,6 +92,7 @@ app.use('/', viewRouter);
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reviews', reviewRouter);
+app.use('/api/v1/bookings', bookingRouter);
 
 app.all('*', (req, res, next) => {
   // const err = new Error(`Can't find ${req.originalUrl} on this server`);
