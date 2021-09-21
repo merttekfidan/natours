@@ -22,6 +22,7 @@ const viewRouter = require('./routes/viewRoutes');
 ////////////////////
 //// GLOBAL MIDDLEWARES
 // Set security HTTP headers
+app.enable('trust proxy');
 app.use(
   helmet({
     contentSecurityPolicy: false,
