@@ -23,6 +23,7 @@ mongoose
   })
   .then(() => {
     //console.log('DB connection successful!');
+    //console.log('DB connection successful!');
   });
 
 console.log(process.env.NODE_ENV);
