@@ -25,6 +25,7 @@
     "@babel/polyfill": "^7.12.1",
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
@@ -60,7 +61,7 @@
     "parcel-bundler": "^1.12.5",
     "prettier": "^2.2.1"
   },
-    "engines":{
-      "node":"^14"
-    }
+  "engines": {
+    "node": "^14"
+  }
 }
